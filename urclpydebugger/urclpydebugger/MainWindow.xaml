@@ -1,0 +1,62 @@
+﻿<Window x:Class="urclpydebugger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:urclpydebugger"
+        mc:Ignorable="d"
+        Title="URCL Debugger" Height="450" Width="800" FontFamily="Consolas">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<ToolBarPanel x:Name="ToolbarArea" Grid.ColumnSpan="2" DockPanel.Dock="Top" ClipToBounds="True">
+			<ToolBar ToolBarTray.IsLocked="True" Margin="-5,0,-13,0" Padding="5,0,0,0" Background="#F0F0F0">
+				<Menu ToolBar.OverflowMode="Never">
+					<MenuItem Header="File">
+						<MenuItem Header="Open" Click="MenuItem_Click_1"/>
+						<MenuItem x:Name="UnloadMenu" Header="Unload" IsEnabled="False"/>
+						<Separator/>
+						<MenuItem Header="Exit" Click="MenuItem_Click"/>
+					</MenuItem>
+					<MenuItem Header="Step" Click="MenuItem_Click_2"/>
+					<MenuItem Header="Run" Click="MenuItem_Click_3"/>
+					<MenuItem Header="Reload" Click="MenuItem_Click_4"/>
+				</Menu>
+			</ToolBar>
+		</ToolBarPanel>
+
+		<Border Grid.Row="1" BorderThickness="1" BorderBrush="Silver">
+			<ScrollViewer x:Name="RegistersArea">
+				<StackPanel x:Name="RegisterList"/>
+			</ScrollViewer>
+		</Border>
+
+		<Border Grid.Row="1" Grid.Column="1" BorderThickness="1" BorderBrush="Silver">
+			<ScrollViewer x:Name="InstructionsArea">
+				<StackPanel x:Name="InstructionList"/>
+			</ScrollViewer>
+		</Border>
+
+		<Border Grid.Row="2" BorderThickness="1" BorderBrush="Silver">
+			<ScrollViewer x:Name="StackArea">
+				<StackPanel x:Name="StackList"/>
+			</ScrollViewer>
+		</Border>
+
+		<Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="Silver">
+			<ScrollViewer x:Name="MemoryArea">
+				<StackPanel x:Name="MemoryList"/>
+			</ScrollViewer>
+		</Border>
+	</Grid>
+</Window>
