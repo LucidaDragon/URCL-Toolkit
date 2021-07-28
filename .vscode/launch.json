@@ -1,0 +1,19 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Current Project",
+			"type": "python",
+			"request": "launch",
+			"program": "demo.py",
+			"console": "integratedTerminal"
+		},
+		{
+			"name": "Current File",
+			"type": "python",
+			"request": "launch",
+			"program": "${file}",
+			"console": "integratedTerminal"
+		}
+	]
+}
