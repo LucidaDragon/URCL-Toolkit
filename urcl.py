@@ -191,8 +191,8 @@ def ParseInstruction(text):
 		elif text[i].startswith("//") or comment:
 			text[i] = None
 			comment = True
-	return Instruction(text[0], text[1], text[2], text[3])
-	
+	return Instruction(text[0].upper(), text[1], text[2], text[3])
+
 class Emitter:
 	"""An emitter for URCL instructions."""
 	def __init__(self, emitTarget=DEFAULT_TARGET, useR1AsBasePointer=False, memoryManagerMinAddress=0, memoryManagerMaxAddress=18446744073709551615, inlineMemoryManagement=True):
@@ -272,6 +272,11 @@ class Emitter:
 			return True
 		else:
 			return False
+	
+	def IsLabel(self, value):
+		"""Determine if a value is an URCL label."""
+		value = str(value)
+		return len(value) > 0 and value[0] == "." and not " " in value
 
 	def NewRegister(self):
 		"""Allocate a register for use."""
